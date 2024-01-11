@@ -1,0 +1,26 @@
+{
+	"name": "client",
+	"description": "Dawn Client",
+	"author": {
+		"name": "ArnabRollin",
+		"email": "iamarnab.phukan+solarcodext@gmail.com",
+		"url": "https://github.com/ArnabRollin"
+	},
+	"license": "MIT",
+	"version": "0.0.1",
+	"publisher": "vscode",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Solarcode-org/solarcode.rich-dwn"
+	},
+	"engines": {
+		"vscode": "^1.52.0"
+	},
+	"scripts": {},
+	"dependencies": {
+		"vscode-languageclient": "^7.0.0"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.52.0"
+	}
+}
