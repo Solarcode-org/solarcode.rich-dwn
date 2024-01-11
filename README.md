@@ -1,15 +1,35 @@
-# LSP Multi Server Example
+# LSP UI Example
 
-A language server example that demonstrates how to start a server per workspace folder. If the workspace has nested workspace folders only a server for the outer most workspace folder is started assuming that the language service handles nested code.
+Sample to demonstrate UI support for code actions in LSP
 
-The example uses proposed Language Server protocol. So the code demoed here might change when the final version of the configuration and workspace folder protocol is released.
+## Functionality
+
+This Language Server works for plain text file. It has the following language features:
+
+- Diagnostics
+- Code Actions with UI
+
+## Structure
+
+```
+.
+├── client // Language Client
+│   ├── src
+│   │   └── extension.ts // Language Client entry point
+├── package.json // The extension manifest.
+└── server // Language Server
+    └── src
+        └── sampleServer.ts // Language Server entry point
+```
 
 ## Running the Sample
 
-- run `npm install` in this folder. This installs all necessary npm modules in both the client and server folder
-- open VS Code on this folder.
-- Press Ctrl+Shift+B to compile the client and server
-- Switch to the Debug viewlet
-- Select `Launch Client` from the drop down
-- Run the launch config
+- Run `npm install` in this folder. This installs all necessary npm modules in both the client and server folder
+- Open VS Code on this folder.
+- Press Ctrl+Shift+B to compile the client and server.
+- Switch to the Debug viewlet.
+- Select `Launch Client` from the drop down.
+- Run the launch config.
 - If you want to debug the server as well use the launch configuration `Attach to Server`
+- In the [Extension Development Host] instance of VSCode, open a document in 'plain text' language mode.
+  - Activate code action on the error on the first line.

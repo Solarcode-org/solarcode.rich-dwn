@@ -1,4 +1,5 @@
 {
+	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
 		"module": "commonjs",
 		"target": "es2020",
@@ -8,6 +9,6 @@
 		"sourceMap": true
 	},
 	"include": ["src"],
-	"exclude": ["node_modules", ".vscode-test"],
+	"exclude": ["node_modules"],
 	"references": [{ "path": "./client" }, { "path": "./server" }]
 }

@@ -4,7 +4,7 @@ trigger:
       - main
   tags:
     include:
-      - refs/tags/v*
+      - refs/tags/*
 
 strategy:
   matrix:
@@ -21,8 +21,7 @@ pool:
 steps:
   - bash: |
       curl -fsSL https://bun.sh/install | bash
-
-    displayName: Install Bun
+    displayName: Install bun
     condition: succeeded()
 
   - bash: |

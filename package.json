@@ -1,78 +1,86 @@
 {
   "name": "rich-dwn",
   "displayName": "Rich Dawn",
-  "description": "Rich support for the Dawn Programming Language",
+  "description": "Rich language support for the Dawn Programming Language",
+  "version": "1.0.0",
   "author": {
     "name": "ArnabRollin",
-    "email": "iamarnab.phukan+solarcodext@gmail.com",
+    "email": "iamarnab.phukan+dawn@gmail.com",
     "url": "https://github.com/ArnabRollin"
   },
-  "license": "MIT",
-  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Solarcode-org/solarcode.rich-dwn"
+    "url": "https://github.com/Solarcode-org/solarcode.rich-dwn.git"
   },
-  "publisher": "Solarcode-org",
   "categories": [
     "Programming Languages"
   ],
+  "publisher": "Solarcode-org",
+  "license": "MIT",
   "keywords": [
     "multi-root ready"
   ],
   "engines": {
-    "vscode": "^1.52.0"
+    "vscode": "^1.75.0"
   },
-  "activationEvents": [
-    "onLanguage:dwn"
-  ],
+  "activationEvents": [],
   "main": "./client/out/extension",
   "contributes": {
-    "configuration": {
-      "type": "object",
-      "title": "Multi LSP configuration",
-      "properties": {
-        "lspMultiServerSample.enable": {
-          "scope": "resource",
-          "type": "boolean",
-          "default": true,
-          "description": "Controls the enablement."
-        },
-        "lspMultiServerSample.options": {
-          "scope": "resource",
-          "type": "object",
-          "default": {},
-          "description": "Additional options."
-        },
-        "lspMultiServerSample.trace.server": {
-          "scope": "window",
-          "type": "string",
-          "enum": [
-            "off",
-            "messages",
-            "verbose"
-          ],
-          "default": "off",
-          "description": "Traces the communication between VSCode and the language server."
+    "languages": [
+      {
+        "id": "dawn",
+        "aliases": [
+          "Dawn",
+          "dawn"
+        ],
+        "extensions": [
+          ".dwn"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "dawn",
+        "scopeName": "source.dwn",
+        "path": "./syntaxes/dawn.tmLanguage.json"
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "language": "dawn",
+        "scopes": {
+          "keywordOther": [
+            "keyword.other.dawn"
+          ]
         }
       }
-    }
+    ]
   },
   "scripts": {
-    "vscode:prepublish": "bun run compile",
+    "vscode:prepublish": "bun run webpack",
+    "webpack": "bun run clean && webpack --mode production --config ./client/webpack.config.js && webpack --mode production --config ./server/webpack.config.js",
+    "webpack:dev": "bun run clean && webpack --mode none --config ./client/webpack.config.js && webpack --mode none --config ./server/webpack.config.js",
     "compile": "tsc -b",
+    "compile:client": "tsc -b ./client/tsconfig.json",
+    "compile:server": "tsc -b ./server/tsconfig.json",
     "watch": "tsc -b -w",
-    "lint": "eslint ./client/src ./server/src --ext .ts,.tsx",
+    "lint": "bun run lint:client && bun run lint:server",
+    "lint:client": "eslint --config ./client/.eslintrc.json ./client/src/*.ts",
+    "lint:server": "eslint --config ./server/.eslintrc.json ./server/src/*.ts",
+    "clean": "rimraf client/out && rimraf server/out",
     "postinstall": "cd client && bun install && cd ../server && bun install && cd ..",
     "deploy": "vsce publish"
   },
   "devDependencies": {
-    "@types/mocha": "^5.2.0",
-    "@types/node": "^16.18.34",
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
-    "@typescript-eslint/parser": "^6.7.0",
-    "eslint": "^8.26.0",
-    "typescript": "^5.3.2",
-    "vsce": "^2.15.0"
+    "@types/node": "^20.8.10",
+    "@typescript-eslint/parser": "^6.9.1",
+    "eslint": "^8.52.0",
+    "merge-options": "^3.0.4",
+    "rimraf": "^5.0.5",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }

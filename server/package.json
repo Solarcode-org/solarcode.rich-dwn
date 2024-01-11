@@ -1,23 +1,27 @@
 {
-	"name": "server",
-	"description": "Dawn Server",
-	"version": "1.0.0",
-	"author": {
-		"name": "ArnabRollin",
-		"email": "iamarnab.phukan+solarcodext@gmail.com",
-		"url": "https://github.com/ArnabRollin"
-	},
-	"license": "MIT",
-	"engines": {
-		"node": "*"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Solarcode-org/solarcode.rich-dwn"
-	},
-	"dependencies": {
-		"vscode-languageserver": "^7.0.0",
-		"vscode-languageserver-textdocument": "^1.0.1"
-	},
-	"scripts": {}
+  "name": "server",
+  "displayName": "Dawn – Server",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "name": "ArnabRollin",
+    "email": "iamarnab.phukan+dawn@gmail.com",
+    "url": "https://github.com/ArnabRollin"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Solarcode-org/solarcode.rich-dwn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArnabRollin/ap-arnab.dawn/issues/"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.11",
+    "vscode-uri": "^3.0.8"
+  }
 }
