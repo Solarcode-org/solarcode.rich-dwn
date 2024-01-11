@@ -19,8 +19,10 @@ pool:
   vmImage: $(imageName)
 
 steps:
-  - uses: oven-sh/setup-bun@v1
-    displayName: Install bun
+  - bash: |
+      curl -fsSL https://bun.sh/install | bash
+
+    displayName: Install Bun
     condition: succeeded()
 
   - bash: |
