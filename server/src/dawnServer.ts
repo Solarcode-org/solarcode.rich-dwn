@@ -19,7 +19,7 @@ import {
 	WorkDoneProgressReporter,
 } from "vscode-languageserver/node";
 import { TextDocument } from "vscode-languageserver-textdocument";
-import { vars } from "./definitionFInder";
+import { vars } from "./definitionFinder";
 import { IParsedToken, tokenModifiers, tokenTypes } from "./semanticTokens";
 
 const connection = createConnection();
